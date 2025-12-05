@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Service Hero Section -->
+<section class="service-hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="service-hero-content">
+                    <div class="service-icon-large">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h1 class="service-title">IT & Networking</h1>
+                    <p class="service-tagline">Master network infrastructure and security with expert guidance and hands-on coaching!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Details Section -->
+<section class="service-details-section">
+    <div class="container">
+        <!-- Introduction -->
+        <div class="service-intro text-center mb-5 pop-in">
+            <h2>Secure Your Digital Infrastructure</h2>
+            <p class="lead">Professional IT networking solutions and personalized coaching</p>
+        </div>
+
+        <!-- Service Items -->
+        <div class="service-items">
+            <!-- Item 1 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Subnetting Mastery Tutoring</h3>
+                        <p>1-on-1 sessions to master IP subnetting, network design, and troubleshooting.</p>
+                        <ul class="service-features">
+                            <li>CIDR notation and VLSM</li>
+                            <li>Network design principles</li>
+                            <li>Practical troubleshooting exercises</li>
+                            <li>Exam preparation (CCNA, Network+)</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/it-1.png') }}" alt="Subnetting Tutoring" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <h3>WAF Rule Configuration</h3>
+                        <p>Harden your web application security with proper WAF configuration.</p>
+                        <ul class="service-features">
+                            <li>Cloudflare WAF setup</li>
+                            <li>Custom rule creation</li>
+                            <li>DDoS protection configuration</li>
+                            <li>Security monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/it-2.png') }}" alt="WAF Configuration" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>AWS Security Groups</h3>
+                        <p>Secure your cloud network infrastructure with proper AWS security group configuration.</p>
+                        <ul class="service-features">
+                            <li>Security group best practices</li>
+                            <li>Network ACL configuration</li>
+                            <li>VPC setup and management</li>
+                            <li>Cloud security auditing</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/it-3.png') }}" alt="AWS Security" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="portfolio-link mt-3">
+                <a href="https://es.fiverr.com/s/bdvEBpX" class="neon-btn" target="_blank">
+                    <i class="fab fa-fiverr"></i> Book a 1-1 session
+                </a>
+            </div>
+    </div>
+</section>
+{% endblock %}

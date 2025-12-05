@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Service Hero Section -->
+<section class="service-hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="service-hero-content">
+                    <div class="service-icon-large">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h1 class="service-title">Web Development & Automation</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Details Section -->
+<section class="service-details-section">
+    <div class="container">
+        <!-- Introduction -->
+        <div class="service-intro text-center mb-5 pop-in">
+            <h2>Transform Your Digital Presence</h2>
+            <p class="lead">Professional web development solutions tailored to your business needs</p>
+        </div>
+
+        <!-- Service Items -->
+        <div class="service-items">
+            <!-- Item 1 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Custom Flask/Python Web Applications</h3>
+                        <p>Build robust, scalable web applications using Flask and Python. From simple websites to complex business applications, I create solutions that grow with your business.</p>
+                        <ul class="service-features">
+                            <li>Custom database design and integration</li>
+                            <li>RESTful API development</li>
+                            <li>User authentication and authorization</li>
+                            <li>Real-time features with WebSockets</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/web-dev-1.png') }}" alt="Flask Web Development" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <h3>Website Deployment & Hosting</h3>
+                        <p>Professional deployment and hosting solutions ensuring your website runs smoothly and securely.</p>
+                        <ul class="service-features">
+                            <li>Cloud deployment (AWS, DigitalOcean)</li>
+                            <li>SSL certificate installation</li>
+                            <li>Domain configuration</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/web-dev-2.png') }}" alt="Website Deployment" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="service-item pop-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Payment Integration & E-commerce</h3>
+                        <p>Secure payment processing integration for your online business.</p>
+                        <ul class="service-features">
+                            <li>PayPal, Stripe, MercadoPago integration</li>
+                            <li>Shopping cart functionality</li>
+                            <li>Order management systems</li>
+                            <li>Inventory tracking</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/web-dev-3.png') }}" alt="Payment Integration" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Projects Section -->
+        <div class="live-projects-section text-center mt-5 pop-in">
+            <h3>SEE MY LIVE PROJECTS:</h3>
+            <div class="project-links mt-3">
+                <a href="https://www.cocinatupausa.com.ar" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> cocinatupausa.com.ar
+                </a>
+                <a href="https://www.nalani.com.ar" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> nalani.com.ar
+                </a>
+                <a href="https://carlamicaeladiviesti-cv.onrender.com/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> carlamicaeladiviesti-cv.onrender.com
+                </a>
+                <a href="https://booking-webapp-vspu.onrender.com/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> booking-webapp-vspu.onrender.com
+                </a>
+            </div>
+            
+            <div class="portfolio-link mt-4">
+                <a href="https://github.com/AROMAN50" class="neon-btn neon-blue" target="_blank">
+                    <i class="fab fa-github"></i> View GitHub Portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

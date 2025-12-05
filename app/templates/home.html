@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center">
+    <div class="hero-video-background">
+        <video autoplay muted loop playsinline>
+            <source src="{{ url_for('static', filename='videos/hero-bg.mp4') }}" type="video/mp4">
+            <img src="{{ url_for('static', filename='images/hero-fallback.jpg') }}" alt="Hero Background">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <div class="hero-logo-container">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Orly Labs Logo" class="hero-logo">
+                    </div>
+                    <h1 class="brand-name">ORLY LABS</h1>
+                    <div class="hero-subtitle">
+                        <p class="lead">Digital Solutions Provider</p>
+                        <p class="tagline">Building your digital foundation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+    <!-- Web Development & Automation -->
+    <div class="service-section full-width-service" id="web-development">
+        <div class="service-content">
+            <div class="service-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h2>Web Development & Automation</h2>
+            <div class="service-description">
+                <p>Custom Flask/Python Web Application Development</p>
+                <p>Website Deployment & Hosting</p>
+                <p>Bug Fixing & Feature Updates for existing sites</p>
+                <p>PayPal / Stripe / MercadoPago Payment Integration</p>
+            </div>
+            <a href="{{ url_for('web_dev') }}" class="neon-btn neon-blue">
+                <span>Explore Services</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- IT & Networking Coaching -->
+    <div class="service-section full-width-service" id="it-coaching">
+        <div class="service-content">
+            <div class="service-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h2>IT & Networking</h2>
+            <div class="service-description">
+                <p>Subnetting Mastery Tutoring (1-on-1 Sessions)</p>
+                <p>WAF Rule Configuration - Harden your web application security</p>
+                <p>AWS Security Groups - Secure your cloud network infrastructure</p>
+                <p>IT support</p>
+            </div>
+            <a href="{{ url_for('it_net') }}" class="neon-btn neon-green">
+                <span>Explore Services</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Creative Design & Video -->
+    <div class="service-section full-width-service" id="creative-design">
+        <div class="service-content">
+            <div class="service-icon">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <h2>Creative Design & Video</h2>
+            <div class="service-description">
+                <p>High-CTR YouTube Thumbnail Design</p>
+                <p>YouTube Shorts / TikTok / Reel Editing</p>
+                <p>Professional Resume & CV Makeover (Canva Pro)</p>
+                <p>Social Media Graphics & Banners</p>
+            </div>
+            <a href="{{ url_for('design') }}" class="neon-btn neon-pink">
+                <span>Explore Services</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- E-Commerce & AI Services -->
+    <div class="service-section full-width-service" id="ecommerce-ai">
+        <div class="service-content">
+            <div class="service-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h2>E-Commerce & AI Services</h2>
+            <div class="service-description">
+                <p>AI Product Catalog Image Creation</p>
+                <p>E-commerce Product Upload & Listing</p>
+                <p>Product Video Creation</p>
+            </div>
+            <a href="{{ url_for('ecom_ai') }}" class="neon-btn neon-purple">
+                <span>Explore Services</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

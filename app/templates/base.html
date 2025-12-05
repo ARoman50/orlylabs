@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Orly Labs - Digital Solutions Provider | Web Development & IT Services</title>
+    <meta name="description" content="Orly Labs provides professional digital solutions including web development, IT networking, creative design, and e-commerce services. Custom Flask applications and automation.">
+    <meta name="keywords" content="web development, Flask, Python, IT networking, creative design, e-commerce, automation, digital solutions">
+    <meta name="author" content="Orly Labs">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Orly Labs - Digital Solutions Provider">
+    <meta property="og:description" content="Professional digital solutions including web development, IT networking, creative design, and e-commerce services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo-seo.jpg') }}">
+    <meta property="og:site_name" content="Orly Labs">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Orly Labs - Digital Solutions Provider">
+    <meta name="twitter:description" content="Professional digital solutions including web development, IT networking, creative design, and e-commerce services.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/logo-seo.jpg') }}">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Orly Labs",
+        "url": "https://yourdomain.com",
+        "logo": "{{ url_for('static', filename='images/logo.png') }}",
+        "description": "Digital Solutions Provider specializing in web development, IT networking, creative design, and e-commerce services.",
+        "email": "contact@orlylabs.com",
+        "sameAs": [
+            "https://fiverr.com/s/pdYrL8y"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "AR"
+        },
+        "service": [
+            {
+                "@type": "Service",
+                "name": "Web Development & Automation",
+                "description": "Custom Flask/Python Web Application Development, Website Deployment & Hosting, Payment Integration"
+            },
+            {
+                "@type": "Service",
+                "name": "IT & Networking",
+                "description": "Subnetting Mastery Tutoring, WAF Rule Configuration, AWS Security Groups, IT support"
+            },
+            {
+                "@type": "Service",
+                "name": "Creative Design & Video",
+                "description": "YouTube Thumbnail Design, Video Editing, Professional Resume Makeover, Social Media Graphics"
+            },
+            {
+                "@type": "Service",
+                "name": "E-Commerce & AI Services",
+                "description": "AI Product Catalog Image Creation, E-commerce Product Upload & Listing, Product Video Creation"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='videos/hero-bg.mp4') }}" as="video" type="video/mp4">
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+5491150496295" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Main Content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="brand-font">Orly Labs</h5>
+                    <p>Digital Solutions Provider</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p><i class="fas fa-envelope me-2"></i>contact@orlylabs.com</p>
+                    <div class="social-links">
+                        <a href="https://fiverr.com/s/pdYrL8y" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-star"></i> Fiverr
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
