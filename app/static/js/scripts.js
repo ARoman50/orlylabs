@@ -1,109 +1,76 @@
-// Enhanced smooth animations and effects
+// Main Landing Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize hero animations
-    initHeroAnimations();
-    
-    // Initialize service section animations
-    initServiceAnimations();
-    
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: 'ease-in-out'
+    });
+
+    // Initialize navigation scroll effect
+    initNavigation();
+
     // Initialize smooth scrolling
     initSmoothScrolling();
-    
+
     // Initialize WhatsApp float
     initWhatsAppFloat();
-    
+
     // Initialize scroll animations
     initScrollAnimations();
+
+    // Initialize service cards
+    initServiceCards();
+
+    // Initialize lazy loading
+    initLazyLoading();
 });
 
-function initHeroAnimations() {
-    const heroLogo = document.querySelector('.hero-logo');
-    const brandName = document.querySelector('.brand-name');
-    const heroLead = document.querySelector('.hero-subtitle .lead');
-    const heroTagline = document.querySelector('.hero-subtitle .tagline');
+// Navigation Scroll Effect
+function initNavigation() {
+    const navbar = document.getElementById('mainNav');
     
-    // Reset initial states
-    if (heroLogo) heroLogo.style.opacity = '0';
-    if (brandName) brandName.style.opacity = '0';
-    if (heroLead) heroLead.style.opacity = '0';
-    if (heroTagline) heroTagline.style.opacity = '0';
-    
-    // Sequential animation with delays
-    setTimeout(() => {
-        if (heroLogo) {
-            heroLogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            heroLogo.style.opacity = '1';
-            heroLogo.style.transform = 'translateY(0)';
-        }
-    }, 300);
-    
-    setTimeout(() => {
-        if (brandName) {
-            brandName.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            brandName.style.opacity = '1';
-            brandName.style.transform = 'translateY(0)';
-        }
-    }, 800);
-    
-    setTimeout(() => {
-        if (heroLead) {
-            heroLead.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            heroLead.style.opacity = '1';
-            heroLead.style.transform = 'translateY(0)';
-        }
-    }, 1200);
-    
-    setTimeout(() => {
-        if (heroTagline) {
-            heroTagline.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            heroTagline.style.opacity = '1';
-            heroTagline.style.transform = 'translateY(0)';
-        }
-    }, 1600);
-}
-
-function initServiceAnimations() {
-    const serviceSections = document.querySelectorAll('.service-section');
-    
-    // Set alternating slide directions
-    serviceSections.forEach((section, index) => {
-        if (index % 2 === 0) {
-            section.classList.add('slide-left');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('navbar-scrolled');
         } else {
-            section.classList.add('slide-right');
+            navbar.classList.remove('navbar-scrolled');
+        }
+        
+        // Update active nav link based on scroll position
+        updateActiveNavLink();
+    });
+}
+
+// Update Active Navigation Link
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
         }
     });
 }
 
-function initScrollAnimations() {
-    const serviceSections = document.querySelectorAll('.service-section');
-    
-    const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('service-visible');
-                }, 150);
-            }
-        });
-    }, observerOptions);
-
-    // Observe service sections
-    serviceSections.forEach(section => {
-        observer.observe(section);
-    });
-}
-
+// Smooth Scrolling
 function initSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    for (const link of links) {
-        link.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
@@ -111,64 +78,120 @@ function initSmoothScrolling() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const targetPosition = targetElement.offsetTop - 20;
+                const headerHeight = document.getElementById('mainNav').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Update URL
+                history.pushState(null, null, targetId);
+                
+                // Update active nav link
+                updateActiveNavLink();
             }
         });
-    }
+    });
 }
 
+// Enhanced WhatsApp Float
 function initWhatsAppFloat() {
     const whatsappFloat = document.querySelector('.whatsapp-float');
     
     if (whatsappFloat) {
         let lastScrollTop = 0;
-        let scrollTimeout;
+        let isVisible = true;
         
-        // Enhanced scroll behavior
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', throttle(function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
             
-            // Clear previous timeout
-            clearTimeout(scrollTimeout);
-            
-            // Show/hide based on scroll direction
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down - hide after delay
-                scrollTimeout = setTimeout(() => {
-                    whatsappFloat.classList.add('hidden');
-                }, 150);
-            } else {
-                // Scrolling up - show immediately
-                whatsappFloat.classList.remove('hidden');
-            }
-            
-            // Always show when near bottom of page
-            if (scrollTop + windowHeight >= documentHeight - 100) {
-                whatsappFloat.classList.remove('hidden');
+            // Hide when scrolling down, show when scrolling up
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                if (isVisible) {
+                    whatsappFloat.style.transform = 'translateY(100px)';
+                    isVisible = false;
+                }
+            } else if (scrollTop < lastScrollTop) {
+                if (!isVisible) {
+                    whatsappFloat.style.transform = 'translateY(0)';
+                    isVisible = true;
+                }
             }
             
             lastScrollTop = scrollTop;
-        });
+        }, 100));
         
-        // Add click animation
-        whatsappFloat.addEventListener('click', function(e) {
-            // Add click feedback
-            this.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
+        // Add click analytics
+        whatsappFloat.addEventListener('click', function() {
+            // You can add Google Analytics or other tracking here
+            console.log('WhatsApp contact initiated');
         });
     }
 }
 
-// Enhanced performance with throttling
+// Service Cards Interactions
+function initServiceCards() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.zIndex = '1';
+        });
+        
+        // Keyboard navigation
+        card.addEventListener('focus', function() {
+            this.style.outline = '2px solid var(--accent)';
+        });
+        
+        card.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+    });
+}
+
+// Scroll Animations
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('[data-aos]');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+    
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+// Lazy Loading
+function initLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
+    }
+}
+
+// Utility Functions
 function throttle(func, limit) {
     let inThrottle;
     return function() {
@@ -182,43 +205,54 @@ function throttle(func, limit) {
     }
 }
 
-// Make scroll handlers more efficient
-window.addEventListener('scroll', throttle(function() {
-    // Any additional scroll handlers can go here
-}, 100));
-
-// Handle page visibility for better performance
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        // Page is hidden, reduce animations if needed
-    } else {
-        // Page is visible
-    }
-});
-
-// Service page animations
-function initServicePageAnimations() {
-    const popInElements = document.querySelectorAll('.pop-in');
+// Form Handling (if you add a contact form later)
+function handleContactForm() {
+    const contactForm = document.getElementById('contactForm');
     
-    const popInObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('pop-in-visible');
-                }, 200);
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Add your form submission logic here
+            // For example, using Fetch API to submit to your Flask backend
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            try {
+                // Your submission logic here
+                console.log('Form submitted:', Object.fromEntries(formData));
+                
+                // Show success message
+                alert('Thank you! Your message has been sent.');
+                contactForm.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message';
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    popInElements.forEach(element => {
-        popInObserver.observe(element);
-    });
+    }
 }
 
-// Initialize on service pages
-if (document.querySelector('.service-details-section')) {
-    initServicePageAnimations();
-}
+// Performance optimizations
+window.addEventListener('load', function() {
+    // Remove loading state if you have one
+    document.body.classList.remove('loading');
+    
+    // Initialize any deferred content
+    setTimeout(() => {
+        // Additional post-load initializations
+    }, 100);
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function() {
+    updateActiveNavLink();
+});

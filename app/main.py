@@ -8,19 +8,16 @@ def home():
 
 @app.route('/web-dev')
 def web_dev():
-    return render_template('web-development.html')
+    return render_template('home.html')
 
 @app.route('/it-net')
 def it_net():
-    return render_template('it-networking.html')
+    return render_template('home.html')
 
-@app.route('/design')
-def design():
-    return render_template('creative-desing.html')
 
 @app.route('/ecom-ai')
 def ecom_ai():
-    return render_template('ecommerce-ai.html')
+    return render_template('home.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

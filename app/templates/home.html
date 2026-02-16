@@ -2,108 +2,253 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section d-flex align-items-center">
-    <div class="hero-video-background">
-        <video autoplay muted loop playsinline>
-            <source src="{{ url_for('static', filename='videos/hero-bg.mp4') }}" type="video/mp4">
-            <img src="{{ url_for('static', filename='images/hero-fallback.jpg') }}" alt="Hero Background">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-    
+<section id="hero" class="hero-section" data-aos="fade-up">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-7">
                 <div class="hero-content">
-                    <div class="hero-logo-container">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Orly Labs Logo" class="hero-logo">
+                 
+                    <h1 class="hero-title">
+                        Transform Your <span class="highlight">Digital Presence</span> with Expert Solutions
+                    </h1>
+                    <p class="hero-description">
+                        We build exceptional digital experiences that drive results. From custom web applications to professional catalog services, we help businesses thrive online.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-rocket me-2"></i> Start Your Project
+                        </a>
+                        <a href="#projects" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-eye me-2"></i> View Our Work
+                        </a>
                     </div>
-                    <h1 class="brand-name">ORLY LABS</h1>
-                    <div class="hero-subtitle">
-                        <p class="lead">Digital Solutions Provider</p>
-                        <p class="tagline">Building your digital foundation</p>
+                    <div class="hero-stats mt-5">
+                        <div class="row">
+                            <div class="col-4">
+                                <h4 class="stat-number">50+</h4>
+                                <p class="stat-label">Projects Delivered</p>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="stat-number">100%</h4>
+                                <p class="stat-label">Client Satisfaction</p>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="stat-number">24/7</h4>
+                                <p class="stat-label">Support Available</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+           
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section" data-aos="fade-up">
+    <div class="container">
+        <div class="section-header">
+            <h6 class="section-subtitle">OUR EXPERTISE</h6>
+            <h2 class="section-title">Professional Services That Drive Results</h2>
+            <p class="section-description">
+                We offer comprehensive digital solutions tailored to your business needs
+            </p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Web Development -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="service-title">Web Development</h3>
+                <p class="service-description">
+                    Custom web applications built with Flask/Python. From landing pages to complex business solutions.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Custom Web Applications</li>
+                    <li><i class="fas fa-check"></i> E-commerce Integration</li>
+                    <li><i class="fas fa-check"></i> API Development</li>
+                    <li><i class="fas fa-check"></i> Performance Optimization</li>
+                </ul>
+                <a href="#contact" class="service-link">Start Project <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- IT Networking -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="service-title">IT & Network Security</h3>
+                <p class="service-description">
+                    Secure your digital infrastructure with professional networking and security solutions.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Network Configuration</li>
+                    <li><i class="fas fa-check"></i> Security Audits</li>
+                    <li><i class="fas fa-check"></i> AWS Security Groups</li>
+                    <li><i class="fas fa-check"></i> WAF Configuration</li>
+                </ul>
+                <a href="#contact" class="service-link">Secure Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Professional Catalog -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i class="fas fa-camera-retro"></i>
+                </div>
+                <h3 class="service-title">Professional Catalog Services</h3>
+                <p class="service-description">
+                    Stunning product photography and catalog management to boost your online sales.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Product Photography</li>
+                    <li><i class="fas fa-check"></i> Catalog Management</li>
+                    <li><i class="fas fa-check"></i> Video Production</li>
+                    <li><i class="fas fa-check"></i> Listing Optimization</li>
+                </ul>
+                <a href="#contact" class="service-link">Boost Sales <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Services Section -->
-<section id="services">
-    <!-- Web Development & Automation -->
-    <div class="service-section full-width-service" id="web-development">
-        <div class="service-content">
-            <div class="service-icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <h2>Web Development & Automation</h2>
-            <div class="service-description">
-                <p>Custom Flask/Python Web Application Development</p>
-                <p>Website Deployment & Hosting</p>
-                <p>Bug Fixing & Feature Updates for existing sites</p>
-                <p>PayPal / Stripe / MercadoPago Payment Integration</p>
-            </div>
-            <a href="{{ url_for('web_dev') }}" class="neon-btn neon-blue">
-                <span>Explore Services</span>
-            </a>
+<!-- Projects Showcase -->
+<section id="projects" class="projects-section" data-aos="fade-up">
+    <div class="container">
+        <div class="section-header">
+            <h6 class="section-subtitle">OUR PORTFOLIO</h6>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                See how we've helped businesses transform their digital presence
+            </p>
         </div>
-    </div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/cocinatupausa.png') }}" alt="Cocina Tu Pausa">
+                </div>
+                <div class="project-content">
+                    <h4>Cocina Tu Pausa</h4>
+                    <p>Custom blog</p>
+                    <a href="https://www.cocinatupausa.com.ar" target="_blank" class="project-link">
+                        Visit Site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
 
-    <!-- IT & Networking Coaching -->
-    <div class="service-section full-width-service" id="it-coaching">
-        <div class="service-content">
-            <div class="service-icon">
-                <i class="fas fa-network-wired"></i>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/project2.png') }}" alt="Nalani">
+                </div>
+                <div class="project-content">
+                    <h4>Nalani Boutique</h4>
+                    <p>E-commerce fashion store with mercadopago checkout payment integration</p>
+                    <a href="https://www.nalani.com.ar" target="_blank" class="project-link">
+                        Visit Site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <h2>IT & Networking</h2>
-            <div class="service-description">
-                <p>Subnetting Mastery Tutoring (1-on-1 Sessions)</p>
-                <p>WAF Rule Configuration - Harden your web application security</p>
-                <p>AWS Security Groups - Secure your cloud network infrastructure</p>
-                <p>IT support</p>
-            </div>
-            <a href="{{ url_for('it_net') }}" class="neon-btn neon-green">
-                <span>Explore Services</span>
-            </a>
-        </div>
-    </div>
 
-    <!-- Creative Design & Video -->
-    <div class="service-section full-width-service" id="creative-design">
-        <div class="service-content">
-            <div class="service-icon">
-                <i class="fas fa-paint-brush"></i>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/booking1.png') }}" alt="booking webapp">
+                </div>
+                <div class="project-content">
+                    <h4>Booking system</h4>
+                    <p>Custom booking system for hospitality</p>
+                    <a href="https://booking-webapp-vspu.onrender.com/" target="_blank" class="project-link">
+                        Visit Site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <h2>Creative Design & Video</h2>
-            <div class="service-description">
-                <p>High-CTR YouTube Thumbnail Design</p>
-                <p>YouTube Shorts / TikTok / Reel Editing</p>
-                <p>Professional Resume & CV Makeover (Canva Pro)</p>
-                <p>Social Media Graphics & Banners</p>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/web-dev-2.png') }}" alt="Network configuration and security">
+                </div>
+                <div class="project-content">
+                    <h4>Network configuration</h4>
+                    <p>Network configuration & Security</p>
+                    <a href="https://booking-webapp-vspu.onrender.com/" target="_blank" class="project-link">
+                        Visit Site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <a href="{{ url_for('design') }}" class="neon-btn neon-pink">
-                <span>Explore Services</span>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/catalogue.png') }}" alt="Professional product catalogue">
+                </div>
+                <div class="project-content">
+                    <h4>Professional catalogue image</h4>
+                    <p>Image enhancement for your product catalogues</p>
+                    <a href="https://booking-webapp-vspu.onrender.com/" target="_blank" class="project-link">
+                        see full portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="https://github.com/AROMAN50" target="_blank" class="btn btn-outline-primary btn-lg">
+                <i class="fab fa-github me-2"></i> View GitHub Portfolio
             </a>
         </div>
     </div>
+</section>
 
-    <!-- E-Commerce & AI Services -->
-    <div class="service-section full-width-service" id="ecommerce-ai">
-        <div class="service-content">
-            <div class="service-icon">
-                <i class="fas fa-robot"></i>
+<!-- Process Section -->
+<section id="process" class="process-section" data-aos="fade-up">
+    <div class="container">
+        <div class="section-header">
+            <h6 class="section-subtitle">HOW WE WORK</h6>
+            <h2 class="section-title">Our 4-Step Process</h2>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-number">01</div>
+                <h4>Discovery & Planning</h4>
+                <p>We understand your goals and plan the perfect solution.</p>
             </div>
-            <h2>E-Commerce & AI Services</h2>
-            <div class="service-description">
-                <p>AI Product Catalog Image Creation</p>
-                <p>E-commerce Product Upload & Listing</p>
-                <p>Product Video Creation</p>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-number">02</div>
+                <h4>Design & Development</h4>
+                <p>We create and build your solution with precision.</p>
             </div>
-            <a href="{{ url_for('ecom_ai') }}" class="neon-btn neon-purple">
-                <span>Explore Services</span>
-            </a>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-number">03</div>
+                <h4>Testing & Refinement</h4>
+                <p>We ensure everything works perfectly.</p>
+            </div>
+            <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                <div class="step-number">04</div>
+                <h4>Launch & Support</h4>
+                <p>We deploy and provide ongoing support.</p>
+            </div>
         </div>
     </div>
+</section>
+
+<!-- Contact CTA -->
+<section id="contact" class="contact-section" data-aos="fade-up">
+    <div class="container">
+        <div class="contact-card">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p class="mb-0">Let's discuss your project and create something amazing together.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="https://wa.me/+5491150496295" class="btn btn-success btn-lg me-2" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                    </a>
+                    <a href="mailto:contact@orlylabs.com" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+        
 </section>
 {% endblock %}
